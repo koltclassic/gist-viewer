@@ -33,7 +33,7 @@ const Home = () => {
         <button onClick={() => setUsernameForQuery(usernameToSearch)}>Search</button>
       </main>
 
-      <div>username: {usernameToSearch}</div>
+      {usernameForQuery && <div>username: {usernameForQuery}</div>}
       <div>
         {searchedUserGists && searchedUserGists.map((gist, index) => {
           return <GistCard key={index} gist={gist} />

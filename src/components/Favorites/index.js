@@ -8,13 +8,13 @@ const Favorites = () => {
     <>
       <div>Favorites</div>
       {
-        favorites && favorites.map((favorite, index) => {
+        favorites && favorites.length > 0 ? favorites.map((favorite, index) => {
           return (
-            <Link to={`/${favorite}`}>
-              <div key={index}>{favorite}</div>
+            <Link to={`/${favorite}`} key={index}>
+              <div>{favorite}</div>
             </Link>
           )
-        })
+        }) : <div>No favorites found.</div>
       }
     </>
   )

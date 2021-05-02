@@ -6,13 +6,17 @@ const Home = () => {
   const [usernameToSearch, setUsernameToSearch] = useState('');
   const [usernameForQuery, setUsernameForQuery] = useState('');
   const [searchedUserGists, setSearchedUserGists] = useState(null);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     const getUserGistData = async () => {
+      setSearchedUserGists(null)
+      setIsError(false)
       const userGists = await getGistsForUser(usernameForQuery);
       if (userGists && userGists.data) {
-        console.log({ userGists })
         setSearchedUserGists(userGists.data);
+      } else {
+        setIsError(true)
       }
     }
 
@@ -35,6 +39,7 @@ const Home = () => {
           return <GistCard key={index} gist={gist} />
         })}
       </div>
+      <div>{isError && 'There was an error attempting to fetch that username.'}</div>
     </>
   )
 }

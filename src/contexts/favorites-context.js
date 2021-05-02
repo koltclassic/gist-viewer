@@ -7,6 +7,16 @@ function favoritesReducer(state, action) {
     case 'addFavorite': {
       return { ...state, favorites: [...state.favorites, action.payload] }
     }
+    case 'removeFavorite': {
+      const favoriteIndex = state.favorites.indexOf(action.payload);
+      const favoritesCopy = [...state.favorites];
+
+      if (favoriteIndex !== -1) {
+        favoritesCopy.splice(favoriteIndex, 1)
+        return { ...state, favorites: [favoritesCopy] }
+      }
+      break;
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
     }

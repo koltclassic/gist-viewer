@@ -6,7 +6,7 @@ import { useFavorites } from '../../contexts/favorites-context';
 const Gist = () => {
   let { gistId } = useParams();
   const [gistData, setGistData] = useState(null);
-  const { dispatch } = useFavorites();
+  const { dispatch, state: { favorites } } = useFavorites();
 
   useEffect(() => {
     const getGistData = async () => {
@@ -19,9 +19,17 @@ const Gist = () => {
     getGistData();
   }, [gistId]);
 
+  const handleFavoriteGist = (gistId) => {
+    if (favorites.includes(gistId)) {
+      dispatch({ type: 'removeFavorite', payload: gistId })
+    } else {
+      dispatch({ type: 'addFavorite', payload: gistId })
+    }
+  }
+
   return (
     <>
-      <button onClick={() => dispatch({ type: 'addFavorite', payload: gistId })}>Favorite this gist</button>
+      <button onClick={() => handleFavoriteGist(gistId)}>{favorites.includes(gistId) ? 'Remove gist from favorites' : 'Add gist to favorites'}</button>
       {
         gistData && gistData.files && Object.entries(gistData.files).map(([key, value], index) => {
           return (

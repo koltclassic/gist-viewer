@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import {
   BrowserRouter as Router,
+  Link,
   Switch,
   Route,
 } from "react-router-dom";
@@ -13,6 +14,13 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+            </ul>
+          </nav>
         </header>
 
         <Switch>

@@ -7,7 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './components/Home';
-import Gist from './components/Gist';
+import { GistPage } from './components/Gist';
 import Favorites from './components/Favorites';
 import { FavoritesProvider } from './contexts/favorites-context';
 
@@ -34,7 +34,7 @@ function App() {
               <Favorites />
             </Route>
             <Route path="/:gistId">
-              <Gist />
+              <GistPage />
             </Route>
             <Route path="/">
               <Home />

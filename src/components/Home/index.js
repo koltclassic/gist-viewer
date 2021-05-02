@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getGistsForUser } from '../../api/gists';
-import {
-  Link,
-} from "react-router-dom";
+import { GistCard } from '../Gist';
 
 const Home = () => {
   const [usernameToSearch, setUsernameToSearch] = useState('');
@@ -38,17 +36,6 @@ const Home = () => {
         })}
       </div>
     </>
-  )
-}
-
-const GistCard = ({ gist }) => {
-  const { description, created_at, id } = gist;
-
-  return (
-    <Link to={`/${id}`}>
-      <span>{description && description}</span>
-      <span>{created_at && created_at}</span>
-    </Link>
   )
 }
 

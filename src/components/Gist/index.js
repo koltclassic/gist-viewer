@@ -18,7 +18,17 @@ const Gist = () => {
   }, [gistId]);
 
   return (
-    <pre>{JSON.stringify(gistData, undefined, 2)}</pre>
+    <>
+      {
+        gistData && gistData.files && Object.entries(gistData.files).map(([key, value], index) => {
+          return (
+            <div key={index}>
+              <span>file name: {key}</span>
+            </div>
+          )
+        })
+      }
+    </>
   )
 }
 

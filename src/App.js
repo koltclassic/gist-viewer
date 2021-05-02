@@ -9,36 +9,39 @@ import {
 import Home from './components/Home';
 import Gist from './components/Gist';
 import Favorites from './components/Favorites';
+import { FavoritesProvider } from './contexts/favorites-context';
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
+      <FavoritesProvider>
+        <div className="App">
+          <header className="App-header">
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
                 <li>
                   <Link to="/favorites">Favorites</Link>
                 </li>
-            </ul>
-          </nav>
-        </header>
+              </ul>
+            </nav>
+          </header>
 
-        <Switch>
+          <Switch>
             <Route exact path="/favorites">
               <Favorites />
             </Route>
-          <Route path="/:gistId">
-            <Gist />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
+            <Route path="/:gistId">
+              <Gist />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </FavoritesProvider>
     </Router>
   );
 }

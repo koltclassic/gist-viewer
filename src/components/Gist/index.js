@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getGistByID } from '../../api/gists';
+import { useFavorites } from '../../contexts/favorites-context';
 
 const Gist = () => {
   let { gistId } = useParams();
   const [gistData, setGistData] = useState(null);
+  const { dispatch } = useFavorites();
 
   useEffect(() => {
     const getGistData = async () => {
@@ -19,6 +21,7 @@ const Gist = () => {
 
   return (
     <>
+      <button onClick={() => dispatch({ type: 'addFavorite', payload: gistId })}>Favorite this gist</button>
       {
         gistData && gistData.files && Object.entries(gistData.files).map(([key, value], index) => {
           return (

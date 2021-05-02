@@ -5,7 +5,10 @@ const FavoritesContext = React.createContext()
 function favoritesReducer(state, action) {
   switch (action.type) {
     case 'addFavorite': {
-      return { ...state, favorites: [...state.favorites, action.payload] }
+      if (!state.favorites.includes(action.payload)) {
+        return { ...state, favorites: [...state.favorites, action.payload] }
+      }
+      break;
     }
     case 'removeFavorite': {
       const favoriteIndex = state.favorites.indexOf(action.payload);

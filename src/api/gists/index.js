@@ -8,3 +8,12 @@ export const getGistsForUser = async (user) => {
     console.error(error);
   }
 }
+
+export const getGistByID = async (gistId) => {
+  try {
+    const response = await axios.get(`https://api.github.com/gists/${gistId}`)
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}

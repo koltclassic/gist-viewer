@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from './components/Home';
 import Gist from './components/Gist';
+import Favorites from './components/Favorites';
 
 function App() {
   return (
@@ -19,11 +20,17 @@ function App() {
               <li>
                 <Link to="/">Home</Link>
               </li>
+                <li>
+                  <Link to="/favorites">Favorites</Link>
+                </li>
             </ul>
           </nav>
         </header>
 
         <Switch>
+            <Route exact path="/favorites">
+              <Favorites />
+            </Route>
           <Route path="/:gistId">
             <Gist />
           </Route>

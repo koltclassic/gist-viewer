@@ -1,14 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useFavorites } from '../../contexts/favorites-context';
 
 const Favorites = () => {
   const { state: { favorites } } = useFavorites();
   return (
     <>
-      <div>favorites</div>
+      <div>Favorites</div>
       {
         favorites && favorites.map((favorite, index) => {
-          return <span key={index}>{favorite}</span>
+          return (
+            <Link to={`/${favorite}`}>
+              <div key={index}>{favorite}</div>
+            </Link>
+          )
         })
       }
     </>

@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# gist-viewer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## To-Do
+
+- Add permanent data store for holding a user's favorites.
+- Modify favorites functionality to be API-driven rather than contained inside context reducer.
+- Improve error handling for user input, API responses, etc.
+- Improve contextual cues for data and navigation.
+- Consider adding TypeScript to improve type-safety, error handling, etc.
 
 ## Available Scripts
 
